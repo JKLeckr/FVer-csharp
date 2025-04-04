@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>FVer</RootNamespace>
+    <Product>FVer</Product>
+    <AssemblyName>FVer</AssemblyName>
+    <Copyright>Copyright 2025 JKLeckr</Copyright>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Version>0.1-draft01c</Version>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+</Project>

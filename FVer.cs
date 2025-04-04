@@ -1,9 +1,7 @@
 /// Copyright 2025 JKLeckr
 /// SPDX-License-Identifier: Apache-2.0
 
-/// FVer version draft01b
-
-using System;
+/// FVer version draft01c
 
 namespace FVer {
     public sealed class FVersion : IComparable<FVersion> {
@@ -16,11 +14,11 @@ namespace FVer {
 
         private readonly int _revision;
 
-        public FVersion(int baseline, string revision, int release, string prefix = null, string postfix = null) {
+        public FVersion(int baseline, string revision, int release, string? prefix = "", string? postfix = "") {
             if (baseline < 0 || release < 0)
                 throw new ArgumentOutOfRangeException("Version numbers must not be negative");
             if (string.IsNullOrEmpty(revision))
-                throw new ArgumentNullException("Revision cannot be null");
+                throw new ArgumentNullException("Revision cannot be null or empty");
 
             _revision = RevisionToInt(revision);
 
@@ -29,7 +27,7 @@ namespace FVer {
             Prefix = prefix ?? "";
             Postfix = postfix ?? "";
         }
-        public FVersion(int baseline, int revision, int release, string prefix = null, string postfix = null) {
+        public FVersion(int baseline, int revision, int release, string? prefix = "", string? postfix = "") {
             if (baseline < 0 || revision < 0 || release < 0)
                 throw new ArgumentOutOfRangeException("Version numbers must not be negative");
 
@@ -150,12 +148,14 @@ namespace FVer {
         }
 
         public static FVersion Zero() {
-            return new FVersion(0, 0, 0, null, null);
+            return new FVersion(0, 0, 0, "", "");
         }
 
         public int CompareTo(FVersion other) => CompareTo(other, null);
-        public int CompareTo(FVersion other, IPrefixComparer prefixComparer) {
+        public int CompareTo(FVersion other, IPrefixComparer? prefixComparer) {
+            #pragma warning disable CS8625
             if (other == null) return 1;
+            #pragma warning restore CS8625
 
             int res = string.IsNullOrEmpty(Prefix).CompareTo(string.IsNullOrEmpty(other.Prefix));
             if (res != 0) return res;
