@@ -1,0 +1,5 @@
+<Project>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)\FVer\FVer.cs" />
+  </ItemGroup>
+</Project>

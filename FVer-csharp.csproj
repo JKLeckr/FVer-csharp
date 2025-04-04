@@ -3,19 +3,33 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net35;net40;net45;net6.0;net8.0</TargetFrameworks>
     <RootNamespace>FVer</RootNamespace>
-    <Product>FVer</Product>
     <AssemblyName>FVer</AssemblyName>
+    <Title>Friendly versioning</Title>
     <Copyright>Copyright 2025 JKLeckr</Copyright>
     <ImplicitUsings>enable</ImplicitUsings>
     <Version>0.1-draft01d</Version>
     <LangVersion>latest</LangVersion>
     <Nullable>disable</Nullable>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <ImplicitUsings>disable</ImplicitUsings>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+    <DevelopmentDependency>true</DevelopmentDependency>
     <Authors>JKLeckr</Authors>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <Company></Company>
     <PackageId>FVer</PackageId>
     <PackageDescription>Friendly Versioning C# Implementation</PackageDescription>
     <RepositoryUrl>https://github.com/JKLeckr/FVer-csharp</RepositoryUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="" />
+    <None Include="FVer.cs" Pack="true" PackagePath="buildTransitive\FVer\FVer.cs" />
+    <None Include="FVer.targets" Pack="true" PackagePath="buildTransitive\FVer.targets" />
+  </ItemGroup>
 </Project>
