@@ -13,6 +13,8 @@
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <Authors>JKLeckr</Authors>
+    <PackageId>FVer-csharp</PackageId>
+    <PackageDescription>Friendly Versioning C# Implementation</PackageDescription>
     <RepositoryUrl>https://github.com/JKLeckr/FVer-csharp</RepositoryUrl>
   </PropertyGroup>
 
