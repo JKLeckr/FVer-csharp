@@ -252,4 +252,8 @@ namespace FVer {
 
         public static implicit operator string(FVersion v) => v.ToString();
     }
+
+    public interface IPrefixComparer {
+        public int Compare(string a, string b);
+    }
 }

@@ -12,6 +12,8 @@
     <Nullable>enable</Nullable>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Authors>JKLeckr</Authors>
+    <RepositoryUrl>https://github.com/JKLeckr/FVer-csharp</RepositoryUrl>
   </PropertyGroup>
 
 </Project>
