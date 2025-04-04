@@ -1,7 +1,7 @@
 /// Copyright 2025 JKLeckr
 /// SPDX-License-Identifier: Apache-2.0
 
-/// FVer version draft01c
+/// FVer version draft01d
 
 namespace FVer {
     public sealed class FVersion : IComparable<FVersion> {
@@ -14,7 +14,7 @@ namespace FVer {
 
         private readonly int _revision;
 
-        public FVersion(int baseline, string revision, int release, string? prefix = "", string? postfix = "") {
+        public FVersion(int baseline, string revision, int release, string prefix = "", string postfix = "") {
             if (baseline < 0 || release < 0)
                 throw new ArgumentOutOfRangeException("Version numbers must not be negative");
             if (string.IsNullOrEmpty(revision))
@@ -27,7 +27,7 @@ namespace FVer {
             Prefix = prefix ?? "";
             Postfix = postfix ?? "";
         }
-        public FVersion(int baseline, int revision, int release, string? prefix = "", string? postfix = "") {
+        public FVersion(int baseline, int revision, int release, string prefix = "", string postfix = "") {
             if (baseline < 0 || revision < 0 || release < 0)
                 throw new ArgumentOutOfRangeException("Version numbers must not be negative");
 
@@ -151,8 +151,7 @@ namespace FVer {
             return new FVersion(0, 0, 0, "", "");
         }
 
-        public int CompareTo(FVersion other) => CompareTo(other, null);
-        public int CompareTo(FVersion other, IPrefixComparer? prefixComparer) {
+        public int CompareTo(FVersion other) {
             #pragma warning disable CS8625
             if (other == null) return 1;
             #pragma warning restore CS8625
@@ -160,11 +159,7 @@ namespace FVer {
             int res = string.IsNullOrEmpty(Prefix).CompareTo(string.IsNullOrEmpty(other.Prefix));
             if (res != 0) return res;
 
-            if (prefixComparer == null) {
-                res = string.Compare(Prefix, other.Prefix, StringComparison.Ordinal);
-            } else {
-                res = prefixComparer.Compare(Prefix, other.Prefix);
-            }
+            res = string.Compare(Prefix, other.Prefix, StringComparison.Ordinal);
             if (res != 0) return res;
 
             res = Baseline.CompareTo(other.Baseline);
@@ -251,9 +246,5 @@ namespace FVer {
         public static bool operator >=(FVersion a, FVersion b) => a.CompareTo(b) >= 0;
 
         public static implicit operator string(FVersion v) => v.ToString();
-    }
-
-    public interface IPrefixComparer {
-        public int Compare(string a, string b);
     }
 }

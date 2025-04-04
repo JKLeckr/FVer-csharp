@@ -1,21 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;net35;net40;net45;net6.0;net8.0</TargetFrameworks>
     <RootNamespace>FVer</RootNamespace>
     <Product>FVer</Product>
     <AssemblyName>FVer</AssemblyName>
     <Copyright>Copyright 2025 JKLeckr</Copyright>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Version>0.1-draft01c</Version>
+    <Version>0.1-draft01d</Version>
     <LangVersion>latest</LangVersion>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <ImplicitUsings>disable</ImplicitUsings>
     <Authors>JKLeckr</Authors>
-    <PackageId>FVer-csharp</PackageId>
+    <PackageId>FVer</PackageId>
     <PackageDescription>Friendly Versioning C# Implementation</PackageDescription>
     <RepositoryUrl>https://github.com/JKLeckr/FVer-csharp</RepositoryUrl>
   </PropertyGroup>
-
 </Project>
