@@ -3,6 +3,8 @@
 
 /// FVer version draft01d
 
+using System;
+
 namespace FVer {
     public sealed class FVersion : IComparable<FVersion> {
         public readonly int Baseline;
