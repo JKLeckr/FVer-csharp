@@ -7,7 +7,7 @@
     <Title>Friendly versioning</Title>
     <Copyright>Copyright 2025 JKLeckr</Copyright>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Version>0.1-draft01d</Version>
+    <Version>0.1-draft01e</Version>
     <LangVersion>latest</LangVersion>
     <Nullable>disable</Nullable>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>

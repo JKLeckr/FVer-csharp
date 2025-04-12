@@ -1,0 +1,49 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: UnitTests
+
+on:
+  push:
+    paths:
+      - "**.cs"
+      - '**.csproj'
+      - 'packages.lock.json'
+      - '.github/workflows/unittests.yml'
+  pull_request:
+    paths:
+      - "**.cs"
+      - '**.csproj'
+      - 'packages.lock.json'
+      - '.github/workflows/unittests.yml'
+
+jobs:
+  unit:
+    runs-on: ${{ matrix.os }}
+    name: Test ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        include:
+          - os: windows-latest
+          - os: macos-latest
+
+    steps:
+    - name: Checkout Project
+      uses: actions/checkout@v4
+
+    - name: Setup dotnet
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: "8.0.x"
+
+    - name: Setup Project
+      run: |
+        dotnet restore
+        dotnet clean
+
+    - name: Unittests
+      run: |
+        dotnet test

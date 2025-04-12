@@ -1,7 +1,7 @@
 /// Copyright 2025 JKLeckr
 /// SPDX-License-Identifier: Apache-2.0
 
-/// FVer version draft01d
+/// FVer version draft01e
 
 using System;
 
@@ -16,7 +16,7 @@ namespace FVer {
 
         private readonly int _revision;
 
-        public FVersion(int baseline, string revision, int release, string prefix = "", string postfix = "") {
+        public FVersion(int baseline, string revision, int release = 0, string prefix = "", string postfix = "") {
             if (baseline < 0 || release < 0)
                 throw new ArgumentOutOfRangeException("Version numbers must not be negative");
             if (string.IsNullOrEmpty(revision))
@@ -29,7 +29,7 @@ namespace FVer {
             Prefix = prefix ?? "";
             Postfix = postfix ?? "";
         }
-        public FVersion(int baseline, int revision, int release, string prefix = "", string postfix = "") {
+        public FVersion(int baseline, int revision, int release = 0, string prefix = "", string postfix = "") {
             if (baseline < 0 || revision < 0 || release < 0)
                 throw new ArgumentOutOfRangeException("Version numbers must not be negative");
 
@@ -103,7 +103,7 @@ namespace FVer {
                     throw new FormatException("Expected release number after '.'");
                 }
 
-                rel = int.Parse(version.Substring(relStart, nextIndex));
+                rel = int.Parse(version.Substring(relStart, nextIndex - relStart));
             }
 
             if (nextIndex < version.Length) {
@@ -216,8 +216,17 @@ namespace FVer {
             return 0;
         }
 
-        public override bool Equals(object obj) =>
-            obj is FVersion other && CompareTo(other) == 0;
+        public override bool Equals(object obj) {
+            if (obj is FVersion other) {
+                return 
+                    Baseline == other.Baseline &&
+                    _revision == other._revision &&
+                    Release == other.Release &&
+                    Prefix == other.Prefix &&
+                    Postfix == other.Postfix;
+            }
+            return false;
+        }
 
         public override int GetHashCode() {
             unchecked {
