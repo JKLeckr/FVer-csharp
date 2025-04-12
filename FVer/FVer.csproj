@@ -29,7 +29,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="README.md" Pack="true" PackagePath="" />
+    <None Include="../README.md" Pack="true" PackagePath="" />
     <None Include="FVer.cs" Pack="true" PackagePath="buildTransitive\FVer\FVer.cs" />
     <None Include="FVer.targets" Pack="true" PackagePath="buildTransitive\FVer.targets" />
   </ItemGroup>
